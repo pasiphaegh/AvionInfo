@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="2500"
+   height="2500"
+   viewBox="0 0 192.756 192.756"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="australia-post.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.4036"
+     inkscape:cx="1250"
+     inkscape:cy="1250"
+     inkscape:window-width="3440"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2"
+     showgrid="false" />
+  <path
+     d="M 73.179291,17.730399 C 38.886649,27.965894 14.320524,59.186027 14.320524,96.551193 c 0,37.864797 24.566125,69.094267 58.858767,79.325097 z m 24.05249,-3.58149 h -5.631386 v 8.703907 h 3.58149 c 28.147615,0 51.691115,23.029867 51.691115,51.177483 0,28.147611 -23.03453,51.177481 -51.182144,51.686451 v 53.7457 h 1.53626 c 46.064394,0 83.424904,-36.85619 83.424904,-82.911257 0.005,-45.555431 -37.35584,-82.402284 -83.420239,-82.402284 z"
+     fill="#ffffff"
+     id="path2"
+     sodipodi:nodetypes="csccsccssccscs"
+     style="fill:#000000;stroke-width:4.66948" />
+</svg>
