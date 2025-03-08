@@ -345,7 +345,7 @@
                 <li><a href="#security">Security & Access</a></li>
                 <li><a href="#deliveries">Deliveries</a></li>
                 <li><a href="#contacts">Important Contacts</a></li>
-                <li><a href="#news" class="active">Updates</a></li>
+                <li><a href="#news">Updates</a></li>
             </ul>
         </nav>
 
@@ -558,6 +558,66 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get all sections that we want to track
+    const sections = document.querySelectorAll('.feature-card');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    // Remove the static 'active' class from the Updates link
+    document.querySelector('.nav-menu a.active').classList.remove('active');
+    
+    // Function to determine which section is in view
+    function setActiveLink() {
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100; // Offset for better UX
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+            }
+        });
+        
+        // Set the active class on the corresponding nav link
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1); // Remove the # character
+            
+            if (href === currentSection) {
+                link.classList.add('active');
+            }
+        });
+        
+        // If no section is active and we're at the top, highlight the first nav item
+        if (currentSection === '' && window.scrollY < 100) {
+            navLinks[0].classList.add('active');
+        }
+        
+        // If no section is active and we're at the bottom, highlight the last nav item
+        if (currentSection === '' && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            navLinks[navLinks.length - 1].classList.add('active');
+        }
+    }
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', setActiveLink);
+    
+    // Also handle click events on navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // e.preventDefault(); // Uncomment if you want to handle scrolling via JS instead
+            
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Call the function on page load to set initial state
+    setActiveLink();
+    });
     </script>
 </body>
 </html>
