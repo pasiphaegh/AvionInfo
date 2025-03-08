@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Information</title>
+    <style>
+        :root {
+            --primary-color: #2c5282;
+            --secondary-color: #edf2f7;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+
+        .header {
+            position: relative;
+            background-image: url('./avion-building.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 82, 130, 0.85);
+            backdrop-filter: blur(2px);
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            position: sticky;
+            top: 2rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .nav-menu h2 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .feature-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .feature-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .alert {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            background: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                position: relative;
+                top: 0;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Building Information</h1>
+    </header>
+
+    <div class="container">
+        <nav class="nav-menu">
+            <h2>Quick Navigation</h2>
+            <ul>
+                <li><a href="#waste">Waste Management</a></li>
+                <li><a href="#parking">Parking</a></li>
+                <li><a href="#lifts">Lifts</a></li>
+                <li><a href="#security">Security & Access</a></li>
+                <li><a href="#deliveries">Deliveries</a></li>
+                <li><a href="#contacts">Important Contacts</a></li>
+                <li><a href="#news">Latest Updates</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-section">
+            <section id="waste" class="feature-card">
+                <h2>Waste Management</h2>
+                <p>The garbage room is located on level -1 under the car ramp.</p>
+                <h3>Collection Schedule</h3>
+                <ul>
+                    <li>Red rubbish bins: Mondays and Thursdays</li>
+                    <li>Yellow recycling bins: Thursdays</li>
+                    <li>Green waste bins: Every second Thursday</li>
+                </ul>
+                <h3>Large Item Disposal</h3>
+                <p>Council collection dates for 2025:</p>
+                <ul>
+                    <li><s>Monday 17 February</s> ✅</li>
+                    <li>Monday 26 May</li>
+                    <li>Monday 18 August</li>
+                    <li>Monday 10 November</li>
+                </ul>
+            </section>
+
+            <section id="parking" class="feature-card">
+                <h2>Parking</h2>
+                <p>Each apartment has allocated parking spaces. Visitor parking is strictly for visitors only and is monitored.</p>
+                <div class="alert">
+                    <strong>Important:</strong> Resident vehicles are not permitted in visitor parking spaces.
+                </div>
+            </section>
+
+            <section id="lifts" class="feature-card">
+                <h2>Lifts</h2>
+                <p>The building has multiple lifts serving all levels. For lift emergencies, please use the emergency intercom in the lift or contact building security.</p>
+                <h3>Emergency Procedures</h3>
+                <ul>
+                    <li>Remain calm and press the emergency button</li>
+                    <li>Use the intercom to communicate with security</li>
+                    <li>Wait for assistance - do not try to force doors open</li>
+                </ul>
+            </section>
+
+            <section id="security" class="feature-card">
+                <h2>Security & Access</h2>
+                <h3>Locksmiths</h3>
+                <p>For lock and key issues, contact the building manager for approved locksmith details.</p>
+                <h3>Access Fobs</h3>
+                <p>Additional or replacement fobs can be arranged through the building manager.<br/>
+                   Replacements cost $120 per fob.</p>
+            </section>
+
+            <section id="deliveries" class="feature-card">
+                <h2>Deliveries</h2>
+                <p>Parcels can be delivered to:</p>
+                <ul>
+                    <li>Your apartment directly (if you're home)</li>
+                    <li>Building manager during office hours</li>
+                    <li>Parcel lockers (if available)</li>
+                </ul>
+            </section>
+
+            <section id="contacts" class="feature-card">
+                <h2>Important Contacts</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <strong>Building Manager</strong><br>
+                        Peter Mintzas<br>
+                        Hours: Mon-Fri, 9am-5pm
+                    </div>
+                    <div class="contact-card">
+                        <strong>Emergency Contact</strong><br>
+                        0400 000 000<br>
+                        24/7 for urgent issues
+                    </div>
+                    <div class="contact-card">
+                        <strong>After Hours Security</strong><br>
+                        0400 111 111
+                    </div>
+                </div>
+            </section>
+
+            <section id="news" class="feature-card">
+                <h2>Latest Updates</h2>
+                <div class="alert">
+                    <strong>Next Body Corporate Meeting:</strong> 1 March 2025 at 7pm via Zoom (online)
+                </div>
+                <p>For detailed updates and news, please visit our <a href="./building-updates.html">Updates Page</a>.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

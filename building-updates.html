@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Updates</title>
+    <style>
+        /* Previous styles remain unchanged until .update-card */
+        :root {
+            --primary-color: #2c5282;
+            --secondary-color: #edf2f7;
+            --text-color: #2d3748;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+
+        .header {
+            position: relative;
+            background-image: url('./avion-building.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 82, 130, 0.85);
+            backdrop-filter: blur(2px);
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+        }
+
+        .header p {
+            position: relative;
+            z-index: 1;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 1.25rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .alert-banner {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        /* Updated card styling to support images */
+        .update-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+        }
+
+        .update-content {
+            flex: 1;
+        }
+
+        .update-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 200px;
+        }
+
+        .update-image-link {
+            display: block;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .update-image-link:hover {
+            transform: scale(1.02);
+        }
+
+        .update-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .update-date {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-title {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .archive-section {
+            margin-top: 2rem;
+            border-top: 2px solid var(--secondary-color);
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .update-card {
+                padding: 1rem;
+                grid-template-columns: 1fr;
+            }
+
+            .update-images {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .update-image-link {
+                width: 200px;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Building updates</h1>
+        <p>Last updated: 17 February 2025</p>
+    </header>
+
+    <main class="container">
+        <!-- Important Announcements -->
+        <div class="alert-banner">
+            <strong>Important:</strong> Next Body Corporate meeting scheduled for 1 March 2025 at 7pm via Zoom (online).
+        </div>
+
+        <!-- Current Updates -->
+        <div class="update-card">
+            <div class="update-content">
+                <div class="update-date">17 February 2025</div>
+                <div class="update-title">Garbage room</div>
+                <p>Do not dump large household furniture in the bin room. We do not have capacity to store large items for months so you must
+                   organise collections or drop-offs yourself.</p>
+                <p>We have four (4) curbside collections per year. The council collection dates are listed below and are also available on the
+                   council website and mobile apps, as well as on fridge magents supplied by the council in your letterbox:</p>
+                   <ul>
+                    <li><s>Monday 17 February</s> ✅</li>
+                    <li>Monday 26 May</li>
+                    <li>Monday 18 August</li>
+                    <li>Monday 10 November</li>
+                </ul>
+            </div>
+            <div class="update-images">
+                <a href="./images/Rubbish.png" class="update-image-link">
+                    <img src="./images/Rubbish.png" alt="Garbage room photo 1" class="update-image">
+                </a>
+                <a href="./images/dumped-furniture.jpg" class="update-image-link">
+                    <img src="./images/dumped-furniture.jpg" alt="Garbage room photo 1" class="update-image">
+                </a>
+            </div>
+        </div>
+
+        <div class="update-card">
+            <div class="update-content">
+                <div class="update-date">18 January 2025</div>
+                <div class="update-title">Bin fines</div>
+                <p>Bayside Council introduced a new scanning system when emptying bins into their trucks. They will fine residents
+                   when the contents of a bin do not match the bin type. For example, when you throw away soft plastics or put plastic bin
+                   liners in the yellow lid recycling bins or shoes in the green lid bins.</p>
+                    <ul>
+                        <li>Yellow lid bins = only individual recyclable items. No soft plastics.</li>
+                        <li>Green lid bins = only plants or branchs; no soil, rubbish or recycling.</li>
+                    </ul>
+                <p>Please pay attention to avoid a fine. Council fines will be passed to offending tenants and owners.</p>
+            </div>
+            <div class="update-images">
+                <a href="./images/Recycling.png" class="update-image-link">
+                    <img src="./images/Recycling.png" alt="Garbage room photo 2" class="update-image">
+                </a>
+            </div>
+        </div>
+
+        <div class="update-card">
+            <div class="update-content">
+                <div class="update-date">4 January 2025</div>
+                <div class="update-title">Garbage room and collection days</div>
+                <p>The garbage room is on level -1 under the car ramp.</p>
+                <p>The rubbish bins are collected:</p>
+                <ul>
+                    <li>Red rubbish bins: Mondays and Thursdays</li>
+                    <li>Yellow recycling bins: Thursdays</li>
+                    <li>Green waste bins: Every second Thursday</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <section class="contact-section">
+            <h2>Important Contacts</h2>
+            <p><strong>Building Manager:</strong> Peter Mintzas<br>
+            <strong>Emergency Contact:</strong> 0400 000 000<br>
+            <strong>After Hours Security:</strong> 0400 111 111</p>
+        </section>
+
+        <!-- Archive Section -->
+        <section class="archive-section">
+            <h2>Previous Updates</h2>
+            <div class="update-card">
+                <div class="update-content">
+                    <div class="update-date">21 December 2024</div>
+                    <div class="update-title">Parking for visitors</div>
+                    <p>Please ensure visitor parking spots are not used for resident vehicles. Violations will be monitored.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
