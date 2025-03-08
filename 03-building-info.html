@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Information</title>
+    <style>
+        :root {
+            --primary-color: #2c5282;
+            --secondary-color: #edf2f7;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
+        }
+
+        .header {
+            position: relative;
+            background-image: url('./avion-building.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 82, 130, 0.85);
+            backdrop-filter: blur(2px);
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            position: sticky;
+            top: 2rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .nav-menu h2 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .feature-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .feature-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .alert {
+            background-color: #fed7d7;
+            border-left: 4px solid #e53e3e;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card {
+            background: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .modal-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-content {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: right;
+        }
+
+        .update-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+        }
+
+        .update-content {
+            flex: 1;
+        }
+
+        .update-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 200px;
+        }
+
+        .update-image-link {
+            display: block;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .update-image-link:hover {
+            transform: scale(1.02);
+        }
+
+        .update-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .update-date {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-title {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #1a365d;
+        }
+
+        .archive-section {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                position: relative;
+                top: 0;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .update-card {
+                grid-template-columns: 1fr;
+            }
+
+            .update-images {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .update-image-link {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Building Information</h1>
+    </header>
+
+    <div class="container">
+        <nav class="nav-menu">
+            <h2>Quick Navigation</h2>
+            <ul>
+                <li><a href="#waste">Waste Management</a></li>
+                <li><a href="#parking">Parking</a></li>
+                <li><a href="#lifts">Lifts</a></li>
+                <li><a href="#security">Security & Access</a></li>
+                <li><a href="#deliveries">Deliveries</a></li>
+                <li><a href="#contacts">Important Contacts</a></li>
+                <li><a href="#news" class="active">Updates</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-section">
+            <section id="waste" class="feature-card">
+                <h2>Waste Management</h2>
+                <p>The garbage room is located on level -1 under the car ramp.</p>
+                <h3>Collection Schedule</h3>
+                <ul>
+                    <li>Red rubbish bins: Mondays and Thursdays</li>
+                    <li>Yellow recycling bins: Thursdays</li>
+                    <li>Green waste bins: Every second Thursday</li>
+                </ul>
+                <h3>Large Item Disposal</h3>
+                <p>Council collection dates for 2025:</p>
+                <ul>
+                    <li><s>Monday 17 February</s> ✅</li>
+                    <li>Monday 26 May</li>
+                    <li>Monday 18 August</li>
+                    <li>Monday 10 November</li>
+                </ul>
+            </section>
+
+            <section id="parking" class="feature-card">
+                <h2>Parking</h2>
+                <p>Each apartment has allocated parking spaces and these are registered with Bayside Council under a legal arrangement.<br />Visitor parking is strictly for visitors only and is monitored.</p>
+                <div class="alert">
+                    <strong>Important:</strong> Visitor parking spaces are not available for resident vehicles.
+                </div>
+            </section>
+
+            <section id="lifts" class="feature-card">
+                <h2>Lifts</h2>
+                <p>The building has multiple lifts serving all levels. For lift emergencies, please use the emergency intercom in the lift or contact building security.</p>
+                <h3>Emergency Procedures</h3>
+                <ul>
+                    <li>Remain calm and press the emergency button</li>
+                    <li>Use the intercom to communicate with security</li>
+                    <li>Wait for assistance - do not try to force doors open</li>
+                </ul>
+            </section>
+
+            <section id="security" class="feature-card">
+                <h2>Security & Access</h2>
+                <h3>Locksmiths</h3>
+                <p>For lock and key issues, contact the building manager for approved locksmith details.</p>
+                <h3>Access Fobs</h3>
+                <p>Additional or replacement fobs can be arranged through the building manager.<br/>
+                   Replacements cost $120 per fob.</p>
+            </section>
+
+            <section id="deliveries" class="feature-card">
+                <h2>Deliveries</h2>
+                <p>Parcels can be delivered to:</p>
+                <ul>
+                    <li>Your apartment directly (if you're home)</li>
+                    <li>Building manager during office hours</li>
+                    <li>Parcel lockers (if available)</li>
+                </ul>
+            </section>
+
+            <section id="contacts" class="feature-card">
+                <h2>Important Contacts</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <strong>Building Manager</strong><br>
+                        Peter Mintzas<br>
+                        Hours: Mon-Fri, 9am-5pm
+                    </div>
+                    <div class="contact-card">
+                        <strong>Emergency Contact</strong><br>
+                        0400 000 000<br>
+                        24/7 for urgent issues
+                    </div>
+                    <div class="contact-card">
+                        <strong>After Hours Security</strong><br>
+                        0400 111 111
+                    </div>
+                </div>
+            </section>
+
+            <section id="news" class="feature-card">
+                <h2>Building Updates</h2>
+                <div class="alert">
+                    <strong>Next Body Corporate Meeting:</strong> 1 March 2025 at 7pm via Zoom (online)
+                </div>
+                <p>Click the button below to view all recent updates and announcements:</p>
+                <button class="btn" id="openUpdatesBtn">View All Updates</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Updates Modal -->
+    <div class="modal-overlay" id="updatesModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Building Updates</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-content">
+                <!-- Important Announcements -->
+                <div class="alert">
+                    <strong>Important:</strong> Next Body Corporate meeting scheduled for 1 March 2025 at 7pm via Zoom (online).
+                </div>
+
+                <!-- Current Updates -->
+                <div class="update-card">
+                    <div class="update-content">
+                        <div class="update-date">17 February 2025</div>
+                        <div class="update-title">Garbage room</div>
+                        <p>Do not dump large household furniture in the bin room. We do not have capacity to store large items for months so you must
+                           organise collections or drop-offs yourself.</p>
+                        <p>We have four (4) curbside collections per year. The council collection dates are listed below and are also available on the
+                           council website and mobile apps, as well as on fridge magents supplied by the council in your letterbox:</p>
+                           <ul>
+                            <li><s>Monday 17 February</s> ✅</li>
+                            <li>Monday 26 May</li>
+                            <li>Monday 18 August</li>
+                            <li>Monday 10 November</li>
+                        </ul>
+                    </div>
+                    <div class="update-images">
+                        <a href="./images/Rubbish.png" class="update-image-link">
+                            <img src="./images/Rubbish.png" alt="Garbage room photo 1" class="update-image">
+                        </a>
+                        <a href="./images/dumped-furniture.jpg" class="update-image-link">
+                            <img src="./images/dumped-furniture.jpg" alt="Garbage room photo 1" class="update-image">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-content">
+                        <div class="update-date">18 January 2025</div>
+                        <div class="update-title">Bin fines</div>
+                        <p>Bayside Council introduced a new scanning system when emptying bins into their trucks. They will fine residents
+                           when the contents of a bin do not match the bin type. For example, when you throw away soft plastics or put plastic bin
+                           liners in the yellow lid recycling bins or shoes in the green lid bins.</p>
+                            <ul>
+                                <li>Yellow lid bins = only individual recyclable items. No soft plastics.</li>
+                                <li>Green lid bins = only plants or branchs; no soil, rubbish or recycling.</li>
+                            </ul>
+                        <p>Please pay attention to avoid a fine. Council fines will be passed to offending tenants and owners.</p>
+                    </div>
+                    <div class="update-images">
+                        <a href="./images/Recycling.png" class="update-image-link">
+                            <img src="./images/Recycling.png" alt="Garbage room photo 2" class="update-image">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-content">
+                        <div class="update-date">4 January 2025</div>
+                        <div class="update-title">Garbage room and collection days</div>
+                        <p>The garbage room is on level -1 under the car ramp.</p>
+                        <p>The rubbish bins are collected:</p>
+                        <ul>
+                            <li>Red rubbish bins: Mondays and Thursdays</li>
+                            <li>Yellow recycling bins: Thursdays</li>
+                            <li>Green waste bins: Every second Thursday</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Archive Section -->
+                <div class="archive-section">
+                    <h2>Previous Updates</h2>
+                    <div class="update-card">
+                        <div class="update-content">
+                            <div class="update-date">21 December 2024</div>
+                            <div class="update-title">Parking for visitors</div>
+                            <p>Please ensure visitor parking spots are not used for resident vehicles. Violations will be monitored.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="closeModalBtnFooter">Close Updates</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('updatesModal');
+            const openBtn = document.getElementById('openUpdatesBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const closeFooterBtn = document.getElementById('closeModalBtnFooter');
+            
+            // Open modal
+            openBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+            });
+            
+            // Close modal functions
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+            
+            closeBtn.addEventListener('click', closeModal);
+            closeFooterBtn.addEventListener('click', closeModal);
+            
+            // Close when clicking outside the modal content
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Handle escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
