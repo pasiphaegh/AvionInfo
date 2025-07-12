@@ -159,6 +159,27 @@
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .alert-text {
+            width: 80%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .alert-image {
+            width: 20%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .alert-image img {
+            max-width: 80%;
+            height: auto;
         }
 
         .contact-grid {
@@ -424,13 +445,23 @@
                 </ul>
                 <p>View <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Bayside Council waste disposal calendar <i class="far fa-calendar-alt calendar-icon"></i></a> for more information. Street address is 26-32 Marsh Street, Wolli Creek.</p>
                 <h3>Large Household Item Disposal</h3>
+                    <div class="alert">
+                        <div class="alert-text">
+                            <strong>DO NOT DUMP LARGE HOUSEHOLD ITEMS IN BIN ROOM</strong><br />
+                            The bin room and red lid bins are designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.
+                        </div>
+                        <div class="alert-image">
+                            <img src="./images/red-lid-bin bg removed.png" alt="rubbish bin" />
+                        </div>
+                    </div>
                 <div class="alert">
-                    <strong>DO NOT DUMP LARGE HOUSEHOLD ITEMS IN BIN ROOM</strong><br />
-                    The bin room is designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.
-                </div>
-                <div class="alert">
-                    <strong>NO SOFT PLASTICS OR BIN LINERS IN THE RECYCLING BINS</strong><br />
-                    Soft plastics and bin liners cannot be recycled. Only place loose recyclable items in the yellow-lid bins. Do not use plastic bin liners.
+                    <div class="alert-text">
+                        <strong>NO SOFT PLASTICS OR BIN LINERS IN THE RECYCLING BINS</strong><br />
+                        Soft plastics and bin liners cannot be recycled. Only place loose recyclable items in the yellow-lid bins. Do not use plastic bin liners.
+                    </div>
+                    <div class="alert-image">
+                        <img src="./images/yellow-lid-bin bg removed.png" alt="recycling bin" />
+                    </div>
                 </div>
                 <p>Council collection dates for large household items:</p>
                 <ul>
