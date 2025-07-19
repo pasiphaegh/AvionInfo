@@ -653,14 +653,13 @@
                         <li><i class="fa-solid fa-arrow-right"></i> <b>Monday 18 August</b></li>
                         <li>Monday 10 November</li>
                     </ul>
-                        </div>
-                        <div class="waste-management-graphic">
-                            <div>
-                                <img id="wasteInfoImage" src="images/2025-07-12 Waste Management Notice.png" alt="Waste Management Graphic" />
-                            </div>
-                        </div>
+                </div>
+                <div class="waste-management-graphic">
+                    <div>
+                        <img id="wasteInfoImage" src="images/2025-07-12 Waste Management Notice.png" alt="Waste Management Graphic" />
                     </div>
                 </div>
+            </div>
             </section>
 
             <section id="parking" class="feature-card">
@@ -832,166 +831,149 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('updatesModal');
-            const openBtn = document.getElementById('openUpdatesBtn');
-            const closeBtn = document.getElementById('closeModalBtn');
-            const closeFooterBtn = document.getElementById('closeModalBtnFooter');
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            
-            // Open modal
-            openBtn.addEventListener('click', function() {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
-            });
-            
-            // Close modal functions
-            function closeModal() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
-            }
-            
-            closeBtn.addEventListener('click', closeModal);
-            closeFooterBtn.addEventListener('click', closeModal);
-            
-            // Close when clicking outside the modal content
-            modal.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            // Handle escape key
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && modal.style.display === 'flex') {
-                    closeModal();
-                }
-            });
+</body>
 
-            // Scroll to top button functionality
-            window.addEventListener('scroll', function() {
-                // Show button when user scrolls down 300px from the top
-                if (window.pageYOffset > 300) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
-            });
-
-            // Scroll to top when button is clicked
-            scrollTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all sections that we want to track
-            const sections = document.querySelectorAll('.feature-card');
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            // Remove the static 'active' class from the Updates link
-            const activeLink = document.querySelector('.nav-menu a.active');
-            if (activeLink) {
-                activeLink.classList.remove('active');
-            }
-            
-            // Function to determine which section is in view
-            function setActiveLink() {
-                let currentSection = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100; // Offset for better UX
-                    const sectionHeight = section.clientHeight;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                        currentSection = sectionId;
-                    }
-                });
-                
-                // Set the active class on the corresponding nav link
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    const href = link.getAttribute('href').substring(1); // Remove the # character
-                    
-                    if (href === currentSection) {
-                        link.classList.add('active');
-                    }
-                });
-                
-                // If no section is active and we're at the top, highlight the first nav item
-                if (currentSection === '' && window.scrollY < 100) {
-                    navLinks[0].classList.add('active');
-                }
-                
-                // If no section is active and we're at the bottom, highlight the last nav item
-                if (currentSection === '' && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-                    navLinks[navLinks.length - 1].classList.add('active');
-                }
-            }
-            
-            // Listen for scroll events
-            window.addEventListener('scroll', setActiveLink);
-            
-            // Also handle click events on navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // e.preventDefault(); // Uncomment if you want to handle scrolling via JS instead
-                    
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-            
-            // Call the function on page load to set initial state
-            setActiveLink();
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const wasteImage = document.getElementById('wasteInfoImage');
-            const wasteModal = document.getElementById('wasteModal');
-            const closeWasteModalBtn = document.getElementById('closeWasteModalBtn');
-
-            wasteImage.addEventListener('click', function () {
-                wasteModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-
-            closeWasteModalBtn.addEventListener('click', function () {
-                wasteModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-
-            wasteModal.addEventListener('click', function (event) {
-                if (event.target === wasteModal) {
-                    wasteModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape' && wasteModal.style.display === 'flex') {
-                    wasteModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-    </script>
-
+    <!-- Waste Modal (moved here to group with other modals) -->
     <div class="modal-overlay" id="wasteModal">
         <div class="modal-container">
             <div class="modal-header">
-            <h3 class="modal-title">Waste Management Info</h3>
-            <button class="modal-close" id="closeWasteModalBtn">&times;</button>
+                <h3 class="modal-title">Waste Management Info</h3>
+                <button class="modal-close" id="closeWasteModalBtn">&times;</button>
             </div>
             <div class="modal-content">
-            <img src="images/2025-07-12 Waste Management Notice.png" alt="Waste Info" style="max-width: 100%;" />
+                <img src="images/2025-07-12 Waste Management Notice.png" alt="Waste Info" style="max-width: 100%;" />
             </div>
         </div>
-        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Updates Modal
+        const modal = document.getElementById('updatesModal');
+        const openBtn = document.getElementById('openUpdatesBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const closeFooterBtn = document.getElementById('closeModalBtnFooter');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        // Waste Modal
+        const wasteImage = document.getElementById('wasteInfoImage');
+        const wasteModal = document.getElementById('wasteModal');
+        const closeWasteModalBtn = document.getElementById('closeWasteModalBtn');
+
+        // Open Updates Modal
+        openBtn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+        });
+        // Close Updates Modal
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        closeBtn.addEventListener('click', closeModal);
+        closeFooterBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Waste Modal logic
+        wasteImage.addEventListener('click', function () {
+            wasteModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        closeWasteModalBtn.addEventListener('click', function () {
+            wasteModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        wasteModal.addEventListener('click', function (event) {
+            if (event.target === wasteModal) {
+                wasteModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Handle escape key for both modals
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (modal.style.display === 'flex') {
+                    closeModal();
+                }
+                if (wasteModal.style.display === 'flex') {
+                    wasteModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Scroll to top button functionality
+        window.addEventListener('scroll', function() {
+            // Show button when user scrolls down 300px from the top
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        // Scroll to top when button is clicked
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Navigation highlighting logic
+        // Get all sections that we want to track
+        const sections = document.querySelectorAll('.feature-card');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        // Remove the static 'active' class from the Updates link
+        const activeLink = document.querySelector('.nav-menu a.active');
+        if (activeLink) {
+            activeLink.classList.remove('active');
+        }
+        // Function to determine which section is in view
+        function setActiveLink() {
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Offset for better UX
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = sectionId;
+                }
+            });
+            // Set the active class on the corresponding nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href').substring(1); // Remove the # character
+                if (href === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+            // If no section is active and we're at the top, highlight the first nav item
+            if (currentSection === '' && window.scrollY < 100) {
+                navLinks[0].classList.add('active');
+            }
+            // If no section is active and we're at the bottom, highlight the last nav item
+            if (currentSection === '' && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                navLinks[navLinks.length - 1].classList.add('active');
+            }
+        }
+        // Listen for scroll events
+        window.addEventListener('scroll', setActiveLink);
+        // Also handle click events on navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // e.preventDefault(); // Uncomment if you want to handle scrolling via JS instead
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        // Call the function on page load to set initial state
+        setActiveLink();
+    });
+    </script>
 </body>
 </html>
