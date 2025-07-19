@@ -137,6 +137,101 @@
             font-size: 1.5rem;
         }
 
+        /* Special layout for waste management section */
+        .waste-management-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .waste-management-graphic {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1rem;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+
+        .waste-management-graphic img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+
+        /* Collection Schedule Table Styles */
+        .collection-schedule {
+            margin: 1.5rem 0;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .schedule-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table td {
+            padding: 0.5rem 0.5rem;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid var(--border-color);
+            min-height: 60px;
+        }
+
+        .schedule-table td:first-child {
+            border-left: none;
+        }
+
+        .bin-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 35%;
+            margin: 0px auto;
+            border: 1px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .bin-indicator.no-bin {
+            width: 20px;
+            height: 20px;
+            border: none;
+            margin: 0px auto;
+            box-shadow: none;
+        }
+
+        .red-bin {
+            background-color: #b13333;
+        }
+
+        .yellow-bin {
+            background-color: #eee451;
+        }
+
+        .green-bin {
+            background-color: #4c7d43;
+        }
+        
+        .bin-wrapper {
+            display: flex;
+            gap: 0px;
+            align-items: center;
+        }
+
         .info {
             background-color: hsl(212  , 95%, 92%);
             border-left: 4px solid hsl(212, 76%, 57%);
@@ -216,8 +311,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 800px;
-            max-height: 90vh;
+            max-width: 1000px;
+            max-height: 95vh;
             overflow-y: auto;
             position: relative;
         }
@@ -389,6 +484,11 @@
                 font-size: 2.5rem;
             }
 
+            .waste-management-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
             .update-card {
                 grid-template-columns: 1fr;
             }
@@ -410,6 +510,16 @@
                 width: 45px;
                 height: 45px;
             }
+
+            .schedule-table th {
+                padding: 0.75rem 0.25rem;
+                font-size: 0.8rem;
+            }
+
+            .schedule-table td {
+                padding: 1rem 0.25rem;
+            }
+
         }
     </style>
 </head>
@@ -436,40 +546,121 @@
         <main class="content-section">
             <section id="waste" class="feature-card">
                 <h2>Waste Management</h2>
-                <p>The garbage room is located on level -1 under the car ramp. Turn right out of the lift, go to the end, then turn right again.</p>
-                <h3>Collection Schedule</h3>
-                <ul>
-                    <li>Red rubbish bins: Mondays and Thursdays</li>
-                    <li>Green waste bins: Mondays</li>
-                    <li>Yellow recycling bins: Thursdays</li>
-                </ul>
-                <p>View <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Bayside Council waste disposal calendar <i class="far fa-calendar-alt calendar-icon"></i></a> for more information. Street address is 26-32 Marsh Street, Wolli Creek.</p>
-                <h3>Council Collection Dates for Large Household Item Disposal</h3>
-                    <div class="alert">
-                        <div class="alert-text">
-                            <strong>DO NOT DUMP LARGE HOUSEHOLD ITEMS IN BIN ROOM</strong><br />
-                            The bin room and red lid bins are designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.
+                <div class="waste-management-content">
+                    <div class="waste-management-text">
+                        <p>The garbage room is located on level -1 under the car ramp. Turn right out of the lift, go to the end, then turn right again.</p>
+                        <p>The bin room and red lid bins are designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.</p>
+                        <p>Soft plastics and bin liners cannot be recycled. Only place loose recyclable items in the yellow-lid bins. Do not use plastic bin liners.</p>
+                        <h3>Weekly Collection Schedule</h3>
+                       <div class="collection-schedule">
+                            <table class="schedule-table">
+                                <tr class="day-headers">
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                                <tr class="collection-indicators">
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator green-bin" title="Green waste bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator yellow-bin" title="Yellow recycling bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="collection-indicators">
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator green-bin" title="Green waste bins"></div>
+                                            <!-- div class="bin-indicator no-bin" title="No bin"></div -->
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator yellow-bin" title="Yellow recycling bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="collection-indicators">
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator green-bin" title="Green waste bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator yellow-bin" title="Yellow recycling bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="collection-indicators">
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                                <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                                <div class="bin-indicator green-bin" title="Green waste bins"></div>
+                                                <!-- div class="bin-indicator no-bin" title="No bin"></div -->
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="bin-wrapper">
+                                            <div class="bin-indicator red-bin" title="Red rubbish bins"></div>
+                                            <div class="bin-indicator yellow-bin" title="Yellow recycling bins"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="alert-image">
-                            <img src="./images/red-lid-bin bg removed.png" alt="rubbish bin" />
+                    <p>Regular 4-week calendar shown and each week is the same.</p>
+                    <p>View <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Bayside Council waste disposal calendar <i class="far fa-calendar-alt calendar-icon"></i></a> for more information. Street address is 26-32 Marsh Street, Wolli Creek.</p>
+                    <h3>Large Household Item Disposal</h3>
+                    <p>Council collection dates for large household items:</p>
+                    <ul>
+                        <li><s>Monday 17 February</s></li>
+                        <li><s>Monday 26 May</s></li>
+                        <li><i class="fa-solid fa-arrow-right"></i> <b>Monday 18 August</b></li>
+                        <li>Monday 10 November</li>
+                    </ul>
                         </div>
-                    </div>
-                <div class="alert">
-                    <div class="alert-text">
-                        <strong>NO SOFT PLASTICS OR BIN LINERS IN THE RECYCLING BINS</strong><br />
-                        Soft plastics and bin liners cannot be recycled. Only place loose recyclable items in the yellow-lid bins. Do not use plastic bin liners.
-                    </div>
-                    <div class="alert-image">
-                        <img src="./images/yellow-lid-bin bg removed.png" alt="recycling bin" />
+                        <div class="waste-management-graphic">
+                            <div>
+                                <img id="wasteInfoImage" src="images/2025-07-12 Waste Management Notice.png" alt="Waste Management Graphic" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p>Council collection dates for large household items:</p>
-                <ul>
-                    <li><s>Monday 17 February</s></li>
-                    <li><s>Monday 26 May</s></li>
-                    <li><i class="fa-solid fa-arrow-right"></i> Monday 18 August</li>
-                    <li>Monday 10 November</li>
-                </ul>
             </section>
 
             <section id="parking" class="feature-card">
@@ -759,6 +950,48 @@
             // Call the function on page load to set initial state
             setActiveLink();
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const wasteImage = document.getElementById('wasteInfoImage');
+            const wasteModal = document.getElementById('wasteModal');
+            const closeWasteModalBtn = document.getElementById('closeWasteModalBtn');
+
+            wasteImage.addEventListener('click', function () {
+                wasteModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeWasteModalBtn.addEventListener('click', function () {
+                wasteModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            wasteModal.addEventListener('click', function (event) {
+                if (event.target === wasteModal) {
+                    wasteModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && wasteModal.style.display === 'flex') {
+                    wasteModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
     </script>
+
+    <div class="modal-overlay" id="wasteModal">
+        <div class="modal-container">
+            <div class="modal-header">
+            <h3 class="modal-title">Waste Management Info</h3>
+            <button class="modal-close" id="closeWasteModalBtn">&times;</button>
+            </div>
+            <div class="modal-content">
+            <img src="images/2025-07-12 Waste Management Notice.png" alt="Waste Info" style="max-width: 100%;" />
+            </div>
+        </div>
+        </div>
 </body>
 </html>
