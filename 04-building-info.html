@@ -139,13 +139,15 @@
 
         /* Special layout for waste management section */
         .waste-management-content {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 2rem;
-            align-items: start;
+            display: flow-root; /* contains the floated poster */
         }
 
+        /* Poster floats top-right; text wraps to its left and then underneath it */
         .waste-management-graphic {
+            float: right;
+            width: 38%;
+            box-sizing: border-box;
+            margin: 0 0 1.5rem 2rem;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -164,6 +166,7 @@
         /* Collection Schedule Table Styles */
         .collection-schedule {
             margin: 1.5rem 0;
+            display: flow-root; /* lets the table sit beside the floated poster */
         }
 
         .schedule-table {
@@ -495,8 +498,16 @@
             }
 
             .waste-management-content {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 1.5rem;
+            }
+
+            .waste-management-graphic {
+                float: none;
+                width: auto;
+                margin: 0;
+                order: 2;
             }
 
             .update-card {
@@ -557,6 +568,11 @@
             <section id="waste" class="feature-card">
                 <h2>Waste Management</h2>
                 <div class="waste-management-content">
+                <div class="waste-management-graphic">
+                    <div>
+                        <img id="wasteInfoImage" src="images/2025-07-12 Waste Management Notice.png" alt="Waste Management Graphic" />
+                    </div>
+                </div>
                     <div class="waste-management-text">
                         <p>The garbage room is located on level -1 under the car ramp. Turn right out of the lift, go to the end, then turn right again.</p>
                         <p>The bin room and red lid bins are designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.</p>
@@ -666,20 +682,13 @@
                         <li>Monday 16 August</li>
                         <li>Monday 8 November</li>
                     </ul>
-                    <p>
-                        <h4>Professional Removal suggestions</h4>
-                        <ul>
-                            <li><u>Furniture</u>: Rubbish Removal Kings (Peter) 0411 867 719</li>
-                            <li><u>General</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
-                            <li><u>Electronics/e-waste</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
-                            <li><u>Mattress recycling</u>: <a target="_blank" href="https://softlanding.com.au">Soft Landing</a></li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="waste-management-graphic">
-                    <div>
-                        <img id="wasteInfoImage" src="images/2025-07-12 Waste Management Notice.png" alt="Waste Management Graphic" />
-                    </div>
+                    <h4>Professional Removal suggestions</h4>
+                    <ul>
+                        <li><u>Furniture</u>: Rubbish Removal Kings (Peter) 0411 867 719</li>
+                        <li><u>General</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
+                        <li><u>Electronics/e-waste</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
+                        <li><u>Mattress recycling</u>: <a target="_blank" href="https://softlanding.com.au">Soft Landing</a></li>
+                    </ul>
                 </div>
             </div>
             </section>
