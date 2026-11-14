@@ -434,6 +434,16 @@
             padding-top: 1.5rem;
         }
 
+        /* Smooth scrolling for all anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Deep link target for the large items sign QR code */
+        #large-items {
+            scroll-margin-top: 1.5rem;
+        }
+
         /* Scroll to top button */
         .scroll-top-btn {
             position: fixed;
@@ -551,7 +561,8 @@
                         <p>The garbage room is located on level -1 under the car ramp. Turn right out of the lift, go to the end, then turn right again.</p>
                         <p>The bin room and red lid bins are designed for small household rubbish only. Bayside Council will fine our building for misuse of the bins. Fines will be passed to offending residents for payment.</p>
                         <p>Soft plastics and bin liners cannot be recycled. Only place loose recyclable items in the yellow-lid bins. Do not use plastic bin liners or plastic bags.</p>
-                        <h3>Weekly Collection Schedule</h3>
+                        <h3>Weekly Collections</h3>
+                        <h4>Schedule</h4>
                        <div class="collection-schedule">
                             <table class="schedule-table">
                                 <tr class="day-headers">
@@ -644,8 +655,10 @@
                             </table>
                         </div>
                     <p>Regular 4-week calendar shown and each week is the same.</p>
+                    <h4>Online council calendar</h4>
                     <p>View <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Bayside Council waste disposal calendar <i class="far fa-calendar-alt calendar-icon"></i></a> for more information. Street address is <i>{Apt#}</i>/26-32 Marsh Street, Wolli Creek.</p>
-                    <h3>Large Household Item Disposal</h3>
+                    <h3 id="large-items">Large Household Item Disposal</h3>
+                    <h4>Council collections</h4>
                     <p>Council collection dates for large household items in 2027:</p>
                     <ul>
                         <li><i class="fa-solid fa-arrow-right"></i> <b>Monday 15 February</b></li>
@@ -656,8 +669,10 @@
                     <p>
                         <h4>Professional Removal suggestions</h4>
                         <ul>
-                            <li>General: Rubbish Removal Kings (Peter) 0411 867 719</li>
-                            <li>Mattress recycling: <a target="_blank" href="https://softlanding.com.au">Soft Landing</a></li>
+                            <li><u>Furniture</u>: Rubbish Removal Kings (Peter) 0411 867 719</li>
+                            <li><u>General</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
+                            <li><u>Electronics/e-waste</u>: Take to <a target="_blank" href="https://waste.bayside.nsw.gov.au/calendar">Waste Management Depot at Bexley or Botany</a> (alternates fortnightly)</li>
+                            <li><u>Mattress recycling</u>: <a target="_blank" href="https://softlanding.com.au">Soft Landing</a></li>
                         </ul>
                     </p>
                 </div>
